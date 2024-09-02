@@ -1,6 +1,6 @@
 const Customer = require('../models/customerModel.js');
 
-const createCustomer = async(req, res) =>{
+const createWpCustomer = async(req, res) =>{
     try{
         const newCustomer = new Customer({ data: req.body });
 
@@ -11,4 +11,4 @@ const createCustomer = async(req, res) =>{
     }
 }
 
-module.exports = { createCustomer};
+module.exports = { createWpCustomer};
