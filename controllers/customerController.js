@@ -2,7 +2,7 @@ const Customer = require('../models/customerModel.js');
 
 const createCustomer = async(req, res) =>{
     try{
-        const newCustomer = new Customer(req.body);
+        const newCustomer = new Customer({ data: req.body });
 
         const saveData = await newCustomer.save();
         res.status(200).json(saveData);
