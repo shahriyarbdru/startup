@@ -3,7 +3,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 
 const userRoute = require('./routes/userRoute.js');
-const customerWpRoute = require('./routes/customerWpRoute.js');
+const orderRoute = require('./routes/orderRoute.js');
 
 const app = express();
 
@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 // Body parser, reading data from the body into req.body
 app.use(express.json({ limit: "10kb" }));
 
-app.use('/api/wp/customer', customerWpRoute);
+app.use('/api/order', orderRoute);
 app.use('/user', userRoute);
 
 module.exports = app;
