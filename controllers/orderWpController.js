@@ -53,15 +53,14 @@ const createWpOrder = async(req, res) =>{
             });
         }
 
-    }
-
-    try{
-        const newOrder = new Order(data);
-
-        const saveData = await newOrder.save();
-        res.status(200).json(saveData);
-    }catch(error){
-        res.status(500).json({message: error.message})
+        try{
+            const newOrder = new Order(data);
+    
+            const saveData = await newOrder.save();
+            res.status(200).json(saveData);
+        }catch(error){
+            res.status(500).json({message: error.message})
+        }
     }
 }
 
