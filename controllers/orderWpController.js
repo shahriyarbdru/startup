@@ -29,7 +29,7 @@ const createWpOrder = async(req, res) =>{
         data.source = apiData.payment_url;
 
         let products = [];
-        data.line_items.forEach((item, index) => {
+        apiData.line_items.forEach((item, index) => {
             products[index] = {};
             products[index].name = item.name;
             products[index].quantity = item.quantity;
@@ -46,9 +46,6 @@ const createWpOrder = async(req, res) =>{
             apiData.meta_data.forEach((item) => {
                 if(item.key === '_deposit_value'){
                     data.paid_amount = item.value;
-                }
-                if(item.key === '_wc_deposits_remaining'){
-                    data.due_amount = item.value;
                 }
             });
         }
