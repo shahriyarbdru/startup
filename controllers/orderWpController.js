@@ -5,12 +5,12 @@ const createWpOrder = async(req, res) =>{
     const apiData = req.body;
     const data = {};
 
-    // if(apiData.hasOwnProperty('id' && 'status' && 'currency' && 'shipping_total' && 'total' && 'billing') &&
-    //    apiData.billing.hasOwnProperty('first_name' && 'address_1' && 'city' && 'state' && 'country' && 'email' && 'phone') &&
-    //    apiData.hasOwnProperty('payment_method_title' && 'customer_note') &&
-    //    apiData.hasOwnProperty('meta_data' && 'line_items' && 'shipping_lines') && 
-    //    apiData.hasOwnProperty('payment_url')
-    // ){
+    if(apiData.hasOwnProperty('id' && 'status' && 'currency' && 'shipping_total' && 'total' && 'billing') &&
+       apiData.billing.hasOwnProperty('first_name' && 'address_1' && 'city' && 'state' && 'country' && 'email' && 'phone') &&
+       apiData.hasOwnProperty('payment_method_title' && 'customer_note') &&
+       apiData.hasOwnProperty('meta_data' && 'line_items' && 'shipping_lines') && 
+       apiData.hasOwnProperty('payment_url')
+    ){
 
         data.external_id = apiData.id;
         data.status = apiData.status;
@@ -59,6 +59,6 @@ const createWpOrder = async(req, res) =>{
             res.status(500).json({message: error.message})
         }
     }
-//}
+}
 
 module.exports = { createWpOrder };
