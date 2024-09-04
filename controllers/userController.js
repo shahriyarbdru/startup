@@ -4,6 +4,8 @@ const createUser = async(req, res) =>{
     try{
         const newUser = new User(req.body);
         const {email} = newUser;
+        const api_key = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+        newUser.api_key = api_key;
 
         const userExist = await User.findOne({email})
         if(userExist){

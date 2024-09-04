@@ -1,9 +1,19 @@
 const Order = require('../models/orderModel.js');
+const User = require('../models/userModel.js');
 
 const createWpOrder = async(req, res) =>{
 
     const apiData = req.body;
     const data = {};
+
+    headerSig = req.headers['x-wc-webhook-signature'];
+
+    const id = req.params.id;
+    const user  = await User.findById(id);
+    
+    if(!user){
+        return res.status(404).json({message: "User not found"})
+    }
 
     if(apiData.hasOwnProperty('id' && 'status' && 'currency' && 'shipping_total' && 'total' && 'billing') &&
        apiData.billing.hasOwnProperty('first_name' && 'address_1' && 'city' && 'state' && 'country' && 'email' && 'phone') &&
@@ -11,7 +21,7 @@ const createWpOrder = async(req, res) =>{
        apiData.hasOwnProperty('meta_data' && 'line_items' && 'shipping_lines') && 
        apiData.hasOwnProperty('payment_url')
     ){
-
+        data.user = id;
         data.external_id = apiData.id;
         data.status = apiData.status;
         data.currency = apiData.currency;
@@ -58,6 +68,8 @@ const createWpOrder = async(req, res) =>{
         }catch(error){
             res.status(500).json({message: error.message})
         }
+    }else{
+        res.status(400).json({message: "Invalid data"})
     }
 }
 

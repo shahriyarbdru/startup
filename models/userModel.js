@@ -8,6 +8,9 @@ const userSchema = new mongoose.Schema({
     phone: String,
     address_1: String,
     address_2: String,
+    plan: String,
+    subscription_status: String,
+    api_key: String,
     orders: [String],
 }, {timestamps: true});
 
