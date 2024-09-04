@@ -10,7 +10,7 @@ const createUser = async(req, res) =>{
             return res.status(400).json({message: "User already exists"})
         }
         const saveData = await newUser.save();
-        res.status(200).json(saveData);
+        res.status(200).json({message: "User created successfully"});
     }catch(error){
         res.status(500).json({message: error.message})
     }
@@ -49,7 +49,7 @@ const updateUser = async(req, res)=>{
         if(!userData){
             return res.status(404).json({message: "No data found"})
         }
-        res.status(200).json(userData);
+        res.status(200).json({message: "User updated successfully"});
     }catch(error){
         res.status(500).json({message: error.message})
     }
