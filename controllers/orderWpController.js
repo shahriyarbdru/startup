@@ -7,6 +7,7 @@ const createWpOrder = async(req, res) =>{
     const data = {};
 
     headerSig = req.headers['x-wc-webhook-signature'];
+    console.log(headerSig);
 
     const id = req.params.id;
     const user  = await User.findById(id);
