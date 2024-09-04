@@ -22,7 +22,7 @@ const createWpOrder = async(req, res) =>{
        apiData.hasOwnProperty('meta_data' && 'line_items' && 'shipping_lines') && 
        apiData.hasOwnProperty('payment_url')
     ){
-        data.user = id;
+        data.user = headerSig;
         data.external_id = apiData.id;
         data.status = apiData.status;
         data.currency = apiData.currency;

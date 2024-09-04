@@ -17,4 +17,3 @@ app.use('/api/wp/order', orderWpRoute);
 app.use('/user', userRoute);
 
 module.exports = app;
-
