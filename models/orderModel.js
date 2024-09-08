@@ -5,6 +5,8 @@ const orderSchema = new mongoose.Schema({
     employee: String,
     note: String,
     source: String,
+    courier: String,
+    courier_status: String,
     external_id: String,
     first_name: String,
     last_name: String,
